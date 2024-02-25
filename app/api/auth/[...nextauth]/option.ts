@@ -1,11 +1,11 @@
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { compare } from "bcrypt";
+import type { NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import Credentials from "next-auth/providers/credentials";
-import { compare } from "bcrypt";
-import { client } from "../../../../libs/prismadb";
-import type { NextAuthConfig } from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import { getUserByEmail } from "../../../../data/user";
+import { client } from "../../../../libs/prismadb";
 import { LoginSchema } from "../../../../schemas";
 
 export default {
@@ -58,7 +58,7 @@ export default {
     signIn: "/auth",
   },
   session: { strategy: "jwt" },
-
+  trustHost: true,
   adapter: PrismaAdapter(client),
   secret: process.env.NEXTAUTH_SECRET!,
 } satisfies NextAuthConfig;

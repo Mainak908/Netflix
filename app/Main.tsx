@@ -19,7 +19,6 @@ const Main = ({ children }: any) => {
     <>
       <InfoModal visible={isOpen} onClose={closeModal} />
       <Navbar />
-
       {children}
     </>
   );

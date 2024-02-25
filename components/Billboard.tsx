@@ -4,7 +4,7 @@ import { Infobtn } from "./ClntComp";
 import PlayButton from "./PlayButton";
 
 const Billboard: React.FC = async () => {
-  const movie = await fetch("http://localhost:3000/api/random");
+  const movie = await fetch(`${process.env.API_URL}/api/random`);
   const data = await movie.json();
 
   return (

@@ -22,7 +22,7 @@ const Mainpage = async () => {
       },
     },
   });
-  const data = await fetch("http://localhost:3000/api/movies");
+  const data = await fetch(`${process.env.API_URL}/api/movies`);
   const movies = await data.json();
 
   return (

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
-import "./globals.css";
 import { SessionProvider } from "next-auth/react";
+import { Work_Sans } from "next/font/google";
 import { auth } from "../auth";
+import "./globals.css";
 
 const sans = Work_Sans({
   subsets: ["latin"],
@@ -24,7 +24,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.className} bg-primary-grey-200`}>
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <SessionProvider session={session} basePath="/auth">
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
