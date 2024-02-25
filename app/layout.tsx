@@ -24,9 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${sans.className} bg-primary-grey-200`}>
-        <SessionProvider session={session} basePath="/auth">
-          {children}
-        </SessionProvider>
+        <SessionProvider session={session}>{children}</SessionProvider>
       </body>
     </html>
   );
